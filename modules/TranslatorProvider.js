@@ -19,11 +19,6 @@ class TranslatorProvider extends Component {
   }
 
   render() {
-    if(typeof this.props.children !== "function") {
-      throw new Error(
-        "TranslatorProvider must have a single, function child"
-      )
-    }
     return this.props.children()
   }
 }

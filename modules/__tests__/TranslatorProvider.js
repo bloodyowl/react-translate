@@ -17,15 +17,19 @@ tape("TranslatorProvider", (test) => {
       const { translator } = this.context
       test.equal(typeof translator.createComponentTranslator, "function")
       test.end()
-      return null
+      return <div />
     }
   }
 
 
-  TestUtils.renderIntoDocument(
+  const rendered = TestUtils.renderIntoDocument(
     <TranslatorProvider translations={{ locale: "fr" }}>
       {() => <TestComponent />}
     </TranslatorProvider>
+  )
+
+  test.doesNotThrow(() =>
+    TestUtils.findRenderedDOMComponentWithTag(rendered, "div")
   )
 
 })
