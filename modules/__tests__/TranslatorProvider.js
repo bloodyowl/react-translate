@@ -11,11 +11,13 @@ tape("TranslatorProvider", (test) => {
 
     static contextTypes = {
       translator: PropTypes.object.isRequired,
+      locale: PropTypes.string.isRequired,
     }
 
     render() {
-      const { translator } = this.context
+      const { translator, locale } = this.context
       test.equal(typeof translator.createComponentTranslator, "function")
+      test.equal(locale, "fr")
       test.end()
       return <div />
     }

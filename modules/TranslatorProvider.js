@@ -9,12 +9,14 @@ class TranslatorProvider extends Component {
 
   static childContextTypes = {
     translator: PropTypes.object.isRequired,
+    locale: PropTypes.string.isRequired,
   }
 
   getChildContext() {
     const { translations } = this.props
     return {
       translator: createTranslator(translations),
+      locale: translations.locale,
     }
   }
 
