@@ -1,6 +1,6 @@
 {
   "name": "react-translate",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "react utilities for simple i18n",
   "main": "./dist/index.js",
   "files": [
