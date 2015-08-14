@@ -1,0 +1,23 @@
+{
+  "name": "react-translate",
+  "version": "1.0.0",
+  "description": "> react utilities for simple i18n",
+  "main": "test.js",
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "babel-core": "^5.8.22",
+    "babel-loader": "^5.3.2",
+    "jsdom": "^6.1.0",
+    "object-assign": "^3.0.0",
+    "react": "^0.13.3",
+    "tape": "^4.1.0",
+    "tape-catch": "^1.0.4",
+    "webpack": "^1.11.0"
+  },
+  "scripts": {
+    "start": "babel-node --stage 0 ./scripts/build",
+    "test": "babel-node --stage 0 ./scripts/build --test"
+  },
+  "author": "bloodyowl",
+  "license": "MIT"
+}
