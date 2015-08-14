@@ -23,7 +23,13 @@ export default function Test() {
       jsdom.env({
         virtualConsole,
         url: "http://localhost:9000",
-        src: [stats.compilation.assets["test.js"]._cachedSource],
+        src: [
+          fs.readFileSync(
+            path.resolve(__dirname, "../node_modules/react/react.js"),
+            "utf8"
+          ),
+          stats.compilation.assets["test.js"]._cachedSource
+        ],
         done: (errors, window) => {
           if(errors) {
             console.error(errors)

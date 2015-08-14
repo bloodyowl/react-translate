@@ -48,17 +48,6 @@ export default {
     ],
   },
 
-  externals : [
-    {
-      "react" : {
-        root : "React",
-        commonjs2 : "react",
-        commonjs : "react",
-        amd : "react",
-      },
-    },
-  ],
-
   node: {
     "fs": "empty",
   },
