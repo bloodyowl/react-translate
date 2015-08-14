@@ -19,6 +19,9 @@
     "tape-catch": "^1.0.4",
     "webpack": "^1.11.0"
   },
+  "peerDependencies": {
+    "react": "^0.13.0",
+  },
   "scripts": {
     "start": "babel-node --stage 0 ./scripts/build",
     "test": "babel-node --stage 0 ./scripts/build --test",
