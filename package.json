@@ -20,7 +20,7 @@
     "webpack": "^1.11.0"
   },
   "peerDependencies": {
-    "react": "^0.13.0",
+    "react": "^0.13.0"
   },
   "scripts": {
     "start": "babel-node --stage 0 ./scripts/build",
