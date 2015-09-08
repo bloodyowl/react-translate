@@ -1,5 +1,18 @@
-import React, { Component, PropTypes } from "react"
+import React, { Component, PropTypes, Children } from "react"
 import createTranslator from "./createTranslator"
+
+function isUsingOwnerContext() {
+  const { version } = React
+  if (typeof version !== "string") {
+    return true
+  }
+
+  const sections = version.split(".")
+  const major = parseInt(sections[0], 10)
+  const minor = parseInt(sections[1], 10)
+
+  return major === 0 && minor === 13
+}
 
 class TranslatorProvider extends Component {
 
@@ -21,6 +34,9 @@ class TranslatorProvider extends Component {
   }
 
   render() {
+    if(isUsingOwnerContext()) {
+      return Children.only(this.props.children)
+    }
     return this.props.children()
   }
 }
