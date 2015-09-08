@@ -35,9 +35,9 @@ class TranslatorProvider extends Component {
 
   render() {
     if(isUsingOwnerContext()) {
-      return Children.only(this.props.children)
+      return this.props.children()
     }
-    return this.props.children()
+    return Children.only(this.props.children)
   }
 }
 

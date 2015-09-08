@@ -1,6 +1,6 @@
 {
   "name": "react-translate",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "react utilities for simple i18n",
   "main": "./dist/index.js",
   "files": [
@@ -28,5 +28,6 @@
     "bump": "npm start && npm publish"
   },
   "author": "bloodyowl",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }
