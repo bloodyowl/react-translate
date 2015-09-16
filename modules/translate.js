@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from "react"
 
 export default function translate(displayName) {
+  let t
   return (ChildComponent) => {
     return class Translator extends Component {
 
@@ -9,8 +10,7 @@ export default function translate(displayName) {
       }
 
       render() {
-        const t = this.context.translator
-          .createComponentTranslator(displayName)
+        t = t || this.context.translator.createComponentTranslator(displayName)
         return (
           <ChildComponent {...this.props} t={t} />
         )
@@ -18,4 +18,3 @@ export default function translate(displayName) {
     }
   }
 }
-
