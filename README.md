@@ -30,13 +30,14 @@ decorators.
 ```javascript
 React.render(
   <TranslatorProvider translations={object}>
-    {() => <App />}
+    {() => <App />} {/* react 0.13- */}
+    <App /> {/* react 0.14+ */}
   </TranslatorProvider>,
   mountNode
 )
 ```
 
-### @translate(displayName) class
+### @translate(displayName[, shouldComponentUpdate]) class
 
 `@translate` is a decorator that wraps a given class in a higher-order
 component. This component passes a `t` function as props, which returns
