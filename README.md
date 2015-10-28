@@ -21,7 +21,7 @@ import { translate } from "react-translator"
 
 ## API
 
-### `<TranslatorProvider translations={object}`
+### `<TranslatorProvider translations={object} />`
 
 A component that provides the translation data to the `translate()` calls in the component hierarchy below.
 You can't use translate() without wrapping the a component (e.g., the root component) in <TranslatorProvider>.
