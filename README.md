@@ -85,3 +85,7 @@ const translations = {
   },
 }
 ```
+
+## example
+
+You can check the [example repository](https://github.com/bloodyowl/react-translate-example)
