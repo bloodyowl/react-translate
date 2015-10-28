@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from "react"
 
 export default function translate(displayName, shouldComponentUpdate) {
   let t
+  let previousLocale = null
   return (ChildComponent) => {
     return class Translator extends Component {
 
@@ -12,7 +13,11 @@ export default function translate(displayName, shouldComponentUpdate) {
       shouldComponentUpdate = shouldComponentUpdate
 
       render() {
-        t = t || this.context.translator.createComponentTranslator(displayName)
+        const { translator } = this.context
+        if(translator.keys.locale !== previousLocale) {
+          t = this.context.translator.createComponentTranslator(displayName)
+          previousLocale = translator.keys.locale
+        }
         return (
           <ChildComponent {...this.props} t={t} />
         )

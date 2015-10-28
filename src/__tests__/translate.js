@@ -1,4 +1,3 @@
-import tape from "tape-catch"
 import React, { Component, addons } from "react/addons"
 
 const { TestUtils } = addons
@@ -23,7 +22,7 @@ tape("translate", (test) => {
   const instance = hoc(TestComponent)
   TestUtils.renderIntoDocument(
     <TranslatorProvider translations={{locale: "fr", Foo: {FOO:"bar"}}}>
-      {() => React.createElement(instance)}
+      {React.createElement(instance)}
     </TranslatorProvider>
   )
 })

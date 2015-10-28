@@ -1,33 +1,31 @@
 {
   "name": "react-translate",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "react utilities for simple i18n",
-  "main": "./dist/index.js",
+  "main": "./lib/index.js",
   "files": [
     "README.md",
     "LICENSE",
-    "dist/index.js"
+    "lib"
   ],
   "devDependencies": {
-    "babel": "^5.8.21",
-    "babel-core": "^5.8.22",
+    "babel": "^5.8.29",
+    "babel-core": "^5.8.30",
     "babel-loader": "^5.3.2",
-    "jsdom": "^6.1.0",
-    "object-assign": "^3.0.0",
     "react": "^0.14.0",
     "tape": "^4.1.0",
     "tape-catch": "^1.0.4",
-    "webpack": "^1.11.0"
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1",
+    "webpack-jsdom-tape-plugin": "^1.2.0"
   },
   "peerDependencies": {
     "react": "^0.14.0"
   },
   "scripts": {
-    "start": "babel-node --stage 0 ./scripts/build",
-    "test": "babel-node --stage 0 ./scripts/build --test",
-    "bump": "npm start && npm publish"
+    "start": "babel --stage 0 src --out-dir lib --ignore='__tests__'",
+    "test": "babel-node --stage 0 ./scripts/webpack/test"
   },
   "author": "bloodyowl",
-  "license": "MIT",
-  "dependencies": {}
+  "license": "MIT"
 }
