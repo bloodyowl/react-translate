@@ -14,9 +14,9 @@ $ npm install --save react-translate
 
 ```javascript
 // at the top of your app
-import { TranslatorProvider } from "react-translator"
+import { TranslatorProvider } from "react-translate"
 // when you require a translator
-import { translate } from "react-translator"
+import { translate } from "react-translate"
 ```
 
 ## API
