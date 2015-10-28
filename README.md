@@ -1,16 +1,16 @@
 # react-translate
 
-> react utilities for simple i18n
+> Internationalization for react
 
 [![Build Status](https://travis-ci.org/bloodyowl/react-translate.svg?branch=master)](https://travis-ci.org/bloodyowl/react-translate)
 
-## install
+## Install
 
 ```console
 $ npm install --save react-translate
 ```
 
-## import
+## Import
 
 ```javascript
 // at the top of your app
@@ -19,31 +19,40 @@ import { TranslatorProvider } from "react-translator"
 import { translate } from "react-translator"
 ```
 
-## api
+## API
 
-### TranslatorProvider
+### `<TranslatorProvider translations={object}`
 
-`TranslatorProvider` is a component to put at the top of your app. It provides
-the context for the higher-order component introduced by the `translate`
-decorators.
+A component that provides the translation data to the `translate()` calls in the component hierarchy below.
+You can't use translate() without wrapping the a component (e.g., the root component) in <TranslatorProvider>.
 
 ```javascript
-React.render(
+import { render } from "react-dom"
+import { TranslatorProvider } from "react-translate"
+
+// …
+
+render(
   <TranslatorProvider translations={object}>
-    {() => <App />} {/* react 0.13- */}
-    <App /> {/* react 0.14+ */}
+    <App />
   </TranslatorProvider>,
   mountNode
 )
 ```
 
-### @translate(displayName[, shouldComponentUpdate]) class
+### translate(displayName[, shouldComponentUpdate])
 
-`@translate` is a decorator that wraps a given class in a higher-order
-component. This component passes a `t` function as props, which returns
-translations for a given key.
+Connects a component to the translations provided by `<TranslatorProvider>`. It passes a `t` function to your component's props. It returns a new, connected component class (i.e., it does not modify the component class passed to it).
+
+#### Arguments
+
+- `displayName` (*String*) Name of the component in the translations. It is required because we cannot rely on the `component.name` with minified code.
+- `shouldComponentUpdate` optional, (*Function*) Custom `shouldComponentUpdate` for the component.
+
+#### Usage
 
 ```javascript
+// with a React class, using it as a decorator
 @translate("Header")
 class Header extends Component {
   render() {
@@ -55,26 +64,40 @@ class Header extends Component {
     )
   }
 }
+
+// with a stateless component function
+const Header = ({ t }) => (
+  <div>
+    {t("TITLE")}
+  </div>
+)
+
+export default translate("Header")(Header)
 ```
 
-### string t(key [, params])
+### t(key [, params])
 
-Returns a translation.
+The `t` function passed a prop is the one that returns your translations given the key, and optionally some parameters.
 
 ```javascript
+// for a simple key
 t("KEY") // "value"
+// for a key with a parameter
 t("KEY", { foo: "bar" }) // replaces "{{foo}}" in the translation with "bar"
-t("KEY", { n: 2 }) // special case, replaces "{{n}}" and gets the adequate
-                   // translation, singular or plural
+// for a key with a numeral parameter, which makes `t` choose between singular
+// and plural
+t("KEY", { n: 2 })
 ```
 
-## how to organise the translations
+## Organizing the `translations` object
 
 Translations should be grouped by component:
 
 ```js
 const translations = {
-  locale: "fr", // you must define the locale parameter
+  // the `locale` parameter is mandatory, it enables react-translate to use
+  // the right rules for singular and plural
+  locale: "fr",
   ComponentName: {
     SIMPLE_KEY: "Helloworld",
     KEY_WITH_PARAMS: "Hello {{name}}",
@@ -86,6 +109,6 @@ const translations = {
 }
 ```
 
-## example
+## Usage example
 
 You can check the [example repository](https://github.com/bloodyowl/react-translate-example)
