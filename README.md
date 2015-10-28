@@ -109,6 +109,13 @@ const translations = {
 }
 ```
 
+## How do I load translations ?
+
+React Translate does give you a specific way to load translations, its goal is only to provide a way to pass translations down to your app components'.
+
+You can use a simple XHR call, put translations in a `<script>` in
+your HTML page, or any other way you find adequate.
+
 ## Usage example
 
 You can check the [example repository](https://github.com/bloodyowl/react-translate-example)
