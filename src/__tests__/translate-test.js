@@ -13,7 +13,7 @@ tape("translate", (test) => {
 tape("translate passes `t` function", (test) => {
   const Dummy = ({ t }) => {
     test.equal(typeof t, "function")
-    test.deepEqual(t("foo"), ["bar"])
+    test.deepEqual(t("foo"), "bar")
     test.end()
     return <div />
   }

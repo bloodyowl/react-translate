@@ -4,11 +4,11 @@ import render from "../render"
 tape("render", (test) => {
   test.deepEqual(
     render("TEST_STRING"),
-    ["TEST_STRING"]
+    "TEST_STRING"
   )
   test.deepEqual(
     render("TEST_STRING {{value}}", { value: "BAR" }),
-    ["TEST_STRING ", "BAR" ,""]
+    "TEST_STRING BAR"
   )
   test.end()
 })
@@ -40,7 +40,7 @@ tape("render preserves null values", (test) => {
 tape("render preserves number values", (test) => {
   test.deepEqual(
     render("TEST_STRING {{value}}", { value: 1 }),
-    ["TEST_STRING ", 1,""]
+    "TEST_STRING 1"
   )
   test.end()
 })

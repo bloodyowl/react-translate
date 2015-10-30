@@ -3,6 +3,18 @@ const REACT_ELEMENT = Symbol.for("react.element")
 
 const EMPTY_ARRAY = []
 
+const isFlattenable = (value) => {
+  const type = typeof value
+  return type === "string" || type === "number"
+}
+
+const flatten = (array) => {
+  if(array.every(isFlattenable)) {
+    return array.join("")
+  }
+  return array
+}
+
 const toTemplate = (string) => {
   const expressionRE = /{{\w+}}/g
   const match = string.match(expressionRE) || EMPTY_ARRAY
@@ -23,7 +35,7 @@ const normalizeValue = (value, key) => {
 
 const render = (string, values) => {
   const [parts, ...expressions] = toTemplate(string)
-  return parts.reduce(
+  return flatten(parts.reduce(
     (acc, item, index, array) => {
       if(index === array.length - 1) {
         return [
@@ -40,7 +52,7 @@ const render = (string, values) => {
       ]
     },
     []
-  )
+  ))
 }
 
 export default render
