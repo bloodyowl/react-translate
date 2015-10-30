@@ -16,7 +16,7 @@ const createTranslator = (keys) => {
       if(Array.isArray(translation)) {
         // plural
         if (params != null && typeof params.n === "number") {
-          translation = translation[this.pluralType(params.n)]
+          translation = translation[pluralType(params.n)]
         }
         else {
           return render(translation.join("\n"), params)
