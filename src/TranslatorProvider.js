@@ -8,7 +8,7 @@ class TranslatorProvider extends Component {
   }
 
   static childContextTypes = {
-    translator: PropTypes.object.isRequired,
+    translator: PropTypes.func.isRequired,
     locale: PropTypes.string.isRequired,
   }
 

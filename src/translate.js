@@ -8,6 +8,7 @@ export default function translate(displayName, shouldComponentUpdate) {
 
       static contextTypes = {
         translator: PropTypes.func.isRequired,
+        locale: PropTypes.string.isRequired,
       }
 
       shouldComponentUpdate = shouldComponentUpdate
