@@ -15,7 +15,7 @@ const createTranslator = (keys) => {
       }
       if(Array.isArray(translation)) {
         // plural
-        if (params !== null && typeof params.n === "number") {
+        if (params != null && typeof params.n === "number") {
           translation = translation[this.pluralType(params.n)]
         }
         else {
