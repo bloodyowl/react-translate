@@ -21,7 +21,7 @@
     "webpack-jsdom-tape-plugin": "^1.2.0"
   },
   "peerDependencies": {
-    "react": "^0.14.0"
+    "react": "^0.14.0 || ^15.0.0"
   },
   "scripts": {
     "start": "babel --stage 0 src --out-dir lib --ignore='__tests__'",
