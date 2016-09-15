@@ -52,20 +52,6 @@ Connects a component to the translations provided by `<TranslatorProvider>`. It 
 #### Usage
 
 ```javascript
-// with a React class, using it as a decorator
-@translate("Header")
-class Header extends Component {
-  render() {
-    const { t } = this.props
-    return (
-      <div>
-        {t("TITLE")}
-      </div>
-    )
-  }
-}
-
-// with a stateless component function
 const Header = ({ t }) => (
   <div>
     {t("TITLE")}
