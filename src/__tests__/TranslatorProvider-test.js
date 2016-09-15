@@ -1,20 +1,23 @@
-import TranslatorProvider from "../TranslatorProvider"
-import React, { Component, PropTypes } from "react"
-import { renderIntoDocument } from "react-addons-test-utils"
+const TranslatorProvider = require("../TranslatorProvider").default
+const React = require("react")
+const { renderIntoDocument } = require("react-addons-test-utils")
 
-tape("TranslatorProvider", (test) => {
+const { Component, PropTypes } = React
+
+it("TranslatorProvider", () => {
   class Dummy extends Component {
-    static contextTypes = {
-      locale: PropTypes.string,
-      translator: PropTypes.object,
-    }
     render() {
-      test.equal(typeof this.context.translator, "function")
-      test.equal(typeof this.context.locale, "string")
-      test.end()
+      expect(typeof this.context.translator).toBe("function")
+      expect(typeof this.context.locale).toBe("string")
       return null
     }
   }
+
+  Dummy.contextTypes = {
+    locale: PropTypes.string,
+    translator: PropTypes.func,
+  }
+
   renderIntoDocument(
     <TranslatorProvider translations={{ locale: "en" }}>
       <Dummy />

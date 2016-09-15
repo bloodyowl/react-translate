@@ -4,25 +4,31 @@ export default function translate(displayName, shouldComponentUpdate) {
   let t
   let previousLocale = null
   return (ChildComponent) => {
-    return class Translator extends Component {
 
-      static contextTypes = {
+     class Translator extends Component {
+
+        constructor(props, context) {
+          super(props, context)
+          this.shouldComponentUpdate = shouldComponentUpdate
+        }
+
+        render() {
+          const { translator, locale } = this.context
+          if(locale !== previousLocale) {
+            t = translator(displayName)
+            previousLocale = locale
+          }
+          return (
+            <ChildComponent {...this.props} t={t} />
+          )
+        }
+      }
+
+      Translator.contextTypes = {
         translator: PropTypes.func.isRequired,
         locale: PropTypes.string.isRequired,
       }
 
-      shouldComponentUpdate = shouldComponentUpdate
-
-      render() {
-        const { translator, locale } = this.context
-        if(locale !== previousLocale) {
-          t = translator(displayName)
-          previousLocale = locale
-        }
-        return (
-          <ChildComponent {...this.props} t={t} />
-        )
-      }
-    }
+      return Translator
   }
 }

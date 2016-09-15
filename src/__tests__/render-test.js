@@ -1,46 +1,39 @@
-import React from "react"
-import render from "../render"
+const React = require("react")
+const render = require("../render").default
 
-tape("render", (test) => {
-  test.deepEqual(
-    render("TEST_STRING"),
-    "TEST_STRING"
-  )
-  test.deepEqual(
-    render("TEST_STRING {{value}}", { value: "BAR" }),
-    "TEST_STRING BAR"
-  )
-  test.end()
+it("render", () => {
+  expect(render("TEST_STRING")).toEqual("TEST_STRING")
+  expect(render("TEST_STRING {{value}}", { value: "BAR" })).toEqual("TEST_STRING BAR")
 })
 
-tape("render can render react elements", (test) => {
-  test.deepEqual(
-    render("TEST_STRING {{value}}", { value: React.createElement("div") }),
+it("render can render react elements", () => {
+  expect(
+    render("TEST_STRING {{value}}", { value: React.createElement("div") })
+  ).toEqual(
     ["TEST_STRING ", React.createElement("div", { key: "0" }) ,""]
   )
-  test.end()
 })
 
-tape("render preserves boolean values", (test) => {
-  test.deepEqual(
-    render("TEST_STRING {{value}}", { value: true }),
+it("render preserves boolean values", () => {
+  expect(
+    render("TEST_STRING {{value}}", { value: true })
+  ).toEqual(
     ["TEST_STRING ", true,""]
   )
-  test.end()
 })
 
-tape("render preserves null values", (test) => {
-  test.deepEqual(
-    render("TEST_STRING {{value}}", { value: null }),
+it("render preserves null values", () => {
+  expect(
+    render("TEST_STRING {{value}}", { value: null })
+  ).toEqual(
     ["TEST_STRING ", null,""]
   )
-  test.end()
 })
 
-tape("render preserves number values", (test) => {
-  test.deepEqual(
-    render("TEST_STRING {{value}}", { value: 1 }),
+it("render preserves number values", () => {
+  expect(
+    render("TEST_STRING {{value}}", { value: 1 })
+  ).toEqual(
     "TEST_STRING 1"
   )
-  test.end()
 })

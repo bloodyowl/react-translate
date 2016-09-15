@@ -1,20 +1,18 @@
-import translate from "../translate"
-import TranslatorProvider from "../TranslatorProvider"
-import React from "react"
-import { renderIntoDocument } from "react-addons-test-utils"
+const translate = require("../translate").default
+const TranslatorProvider = require("../TranslatorProvider").default
+const React = require("react")
+const { renderIntoDocument } = require("react-addons-test-utils")
 
-tape("translate", (test) => {
-  test.equal(typeof translate, "function")
-  test.equal(typeof translate("Foo"), "function")
-  test.end()
+it("translate", () => {
+  expect(typeof translate).toBe("function")
+  expect(typeof translate("Foo")).toBe("function")
 })
 
 
-tape("translate passes `t` function", (test) => {
+it("translate passes `t` function", () => {
   const Dummy = ({ t }) => {
-    test.equal(typeof t, "function")
-    test.deepEqual(t("foo"), "bar")
-    test.end()
+    expect(typeof t).toBe("function")
+    expect(t("foo")).toBe("bar")
     return <div />
   }
   const WrappedDummy = translate("Dummy")(Dummy)
@@ -30,11 +28,10 @@ tape("translate passes `t` function", (test) => {
   )
 })
 
-tape("`t` returns key if component is not specified", (test) => {
+it("`t` returns key if component is not specified", () => {
   const Dummy = ({ t }) => {
-    test.equal(typeof t, "function")
-    test.equal(t("foo"), "DummyError.foo")
-    test.end()
+    expect(typeof t).toBe("function")
+    expect(t("foo")).toBe("DummyError.foo")
     return <div />
   }
   const WrappedDummy = translate("DummyError")(Dummy)
@@ -50,11 +47,10 @@ tape("`t` returns key if component is not specified", (test) => {
   )
 })
 
-tape("`t` returns key if not specified", (test) => {
+it("`t` returns key if not specified", () => {
   const Dummy = ({ t }) => {
-    test.equal(typeof t, "function")
-    test.equal(t("foo"), "Dummy.foo")
-    test.end()
+    expect(typeof t).toBe("function")
+    expect(t("foo")).toBe("Dummy.foo")
     return <div />
   }
   const WrappedDummy = translate("Dummy")(Dummy)

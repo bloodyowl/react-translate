@@ -1,26 +1,23 @@
-import getPluralType from "../getPluralType"
+const getPluralType = require("../getPluralType").default
 
-tape("getPluralType", (test) => {
-  test.equal(typeof getPluralType("fr"), "function")
-  test.equal(getPluralType("fr")(0), 0)
-  test.equal(getPluralType("fr")(1), 0)
-  test.equal(getPluralType("fr")(2), 1)
-  test.equal(getPluralType("en")(0), 1)
-  test.equal(getPluralType("en")(1), 0)
-  test.equal(getPluralType("en")(2), 1)
-  test.end()
+it("getPluralType", () => {
+  expect(typeof getPluralType("fr")).toBe("function")
+  expect(getPluralType("fr")(0)).toBe(0)
+  expect(getPluralType("fr")(1)).toBe(0)
+  expect(getPluralType("fr")(2)).toBe(1)
+  expect(getPluralType("en")(0)).toBe(1)
+  expect(getPluralType("en")(1)).toBe(0)
+  expect(getPluralType("en")(2)).toBe(1)
 })
 
-tape("getPluralType throws if locale is undefined", (test) => {
-  test.throws(() => {
+it("getPluralType throws if locale is undefined", () => {
+  expect(() => {
     getPluralType()
-  })
-  test.end()
+  }).toThrow()
 })
 
-tape("getPluralType throws if locale is unrecognized", (test) => {
-  test.throws(() => {
+it("getPluralType throws if locale is unrecognized", () => {
+  expect(() => {
     getPluralType("??")
-  })
-  test.end()
+  }).toThrow()
 })
