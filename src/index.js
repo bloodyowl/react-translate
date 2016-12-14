@@ -1,7 +1,5 @@
 import translate from "./translate"
 import TranslatorProvider from "./TranslatorProvider"
 
-export default {
-  translate,
-  TranslatorProvider,
-}
+export { translate as translate }
+export { TranslatorProvider as TranslatorProvider }
