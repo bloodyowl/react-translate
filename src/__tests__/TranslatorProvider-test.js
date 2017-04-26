@@ -1,6 +1,6 @@
 const TranslatorProvider = require("../TranslatorProvider").default
 const React = require("react")
-const renderIntoDocument = require("react-dom/test-utils").renderIntoDocument
+const renderIntoDocument = require("react-dom/lib/ReactTestUtils").renderIntoDocument
 const PropTypes = require("prop-types")
 const { Component } = React
 
