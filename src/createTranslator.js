@@ -22,7 +22,8 @@ const createTranslator = (keys) => {
           return render(translation.join("\n"), params)
         }
       }
-      else if (typeof translation === 'object') {
+      else if (!(/string|number|boolean/).test(typeof translation)) {
+        // Dictionary of values
         return translation
       }
       return render(translation, params)
