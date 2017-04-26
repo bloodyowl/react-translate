@@ -1,8 +1,8 @@
 const TranslatorProvider = require("../TranslatorProvider").default
 const React = require("react")
-const { renderIntoDocument } = require("react-addons-test-utils")
-
-const { Component, PropTypes } = React
+const { renderIntoDocument } = require("react-dom/test-utils")
+const PropTypes = require("prop-types")
+const { Component } = React
 
 it("TranslatorProvider", () => {
   class Dummy extends Component {
