@@ -1,5 +1,5 @@
-import render from "./render"
 import getPluralType from "./getPluralType"
+import render from "./render"
 
 const createTranslator = (keys) => {
   const pluralType = getPluralType(keys.locale)
@@ -21,6 +21,9 @@ const createTranslator = (keys) => {
         else {
           return render(translation.join("\n"), params)
         }
+      }
+      else if (typeof translation === 'object') {
+        return translation
       }
       return render(translation, params)
     }
