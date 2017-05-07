@@ -13,7 +13,12 @@ const createTranslator = (keys) => {
       if (translation === undefined) {
         return `${componentName}.${key}`
       }
-      if(Array.isArray(translation)) {
+      const translationObjType = typeof translation;
+      if ("string" !== translationObjType && "number" !== translationObjType && "boolean" !== translationObjType) {
+        // Dictionary of values
+        return translation
+      }
+      else if(Array.isArray(translation)) {
         // plural
         if (params != null && typeof params.n === "number") {
           translation = translation[pluralType(params.n)]
@@ -21,10 +26,6 @@ const createTranslator = (keys) => {
         else {
           return render(translation.join("\n"), params)
         }
-      }
-      else if (!(/string|number|boolean/).test(typeof translation)) {
-        // Dictionary of values
-        return translation
       }
       return render(translation, params)
     }
