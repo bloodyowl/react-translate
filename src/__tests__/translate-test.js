@@ -1,7 +1,7 @@
 const translate = require("../translate").default
 const TranslatorProvider = require("../TranslatorProvider").default
 const React = require("react")
-const renderIntoDocument = require("react-dom/lib/ReactTestUtils").renderIntoDocument
+const { renderIntoDocument } = require("react-addons-test-utils")
 
 it("translate", () => {
   expect(typeof translate).toBe("function")

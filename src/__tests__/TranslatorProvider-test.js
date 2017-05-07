@@ -1,7 +1,6 @@
 const TranslatorProvider = require("../TranslatorProvider").default
 const React = require("react")
-const renderIntoDocument = require("react-dom/lib/ReactTestUtils").renderIntoDocument
-const PropTypes = require("prop-types")
+const { renderIntoDocument } = require("react-addons-test-utils")
 const { Component } = React
 
 it("TranslatorProvider", () => {
@@ -14,8 +13,8 @@ it("TranslatorProvider", () => {
   }
 
   Dummy.contextTypes = {
-    locale: PropTypes.string,
-    translator: PropTypes.func,
+    locale: React.PropTypes.string,
+    translator: React.PropTypes.func,
   }
 
   renderIntoDocument(
