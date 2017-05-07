@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from "react"
-
+import React, { Component } from "react"
+import PropTypes from 'prop-types'
 export default function translate(displayName, shouldComponentUpdate) {
   let t
   let previousLocale = null
