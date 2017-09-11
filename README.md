@@ -61,7 +61,7 @@ const Header = ({ t }) => (
 export default translate("Header")(Header)
 ```
 
-### transate([ displayName, childTranslations, ... ][, shouldComponentUpdate]) - extended translations
+### translate([ displayName, childTranslations, ... ][, shouldComponentUpdate]) - extended translations
 
 You can extend more general translations by providing an array of translation keys to `translate` in order to reduce repetition. Keys to the left have priority and will overwrite any previous translations.
 
