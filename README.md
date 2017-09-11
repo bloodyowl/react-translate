@@ -61,6 +61,59 @@ const Header = ({ t }) => (
 export default translate("Header")(Header)
 ```
 
+### transate([ displayName, childTranslations, ... ][, shouldComponentUpdate]) - extended translations
+
+You can extend more general translations by providing an array of translation keys to `translate` in order to reduce repetition. Keys to the left have priority and will overwrite any previous translations.
+
+
+**Translation file:**
+```json
+{
+  "MyComponent": {
+    "Name": "Your name?",
+    "Age": "Your age?"
+  },
+  "PeopleDetails": {
+    "Age": "How old are you?",
+    "Location": "Your location?"
+  }
+}
+```
+
+**Component:**
+```javascript
+const MyComponent = ({ t }) => (
+  <section>
+    <div>
+      {t("Name")}
+    </div>
+    <div>
+      {t("Age")}
+    </div>
+    <div>
+      {t("Location")}
+    </div>
+  </section>
+)
+
+export default translate(["MyComponent","PeopleDetails"])(Header)
+```
+
+This would export as:
+```html
+<section>
+  <div>
+    Your name?
+  </div>
+  <div>
+    Your age?
+  </div>
+  <div>
+    Your location?
+  </div>
+</section>
+```
+
 ### t(key [, params])
 
 The `t` function passed a prop is the one that returns your translations given the key, and optionally some parameters.

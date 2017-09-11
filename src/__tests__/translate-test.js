@@ -65,3 +65,31 @@ it("`t` returns key if not specified", () => {
     </TranslatorProvider>
   )
 })
+
+it("`t` can deal with extended translations", () => {
+  const Dummy = ({ t }) => {
+    expect(typeof t).toBe("function")
+    expect(t("foo")).toBe("parent-foo")
+    expect(t("overwrite")).toBe("overwrite")
+    expect(t("child-translation")).toBe("child-translation")
+    return <div />
+  }
+  const WrappedDummy = translate([ "Dummy", "Child" ])(Dummy)
+  renderIntoDocument(
+    <TranslatorProvider
+      translations={{
+        locale: "en",
+        "Dummy": {
+          "foo": "parent-foo",
+          "overwrite": "overwrite"
+        },
+        "Child": {
+          "overwrite": "child",
+          "child-translation": "child-translation"
+        }
+      }}
+    >
+      <WrappedDummy />
+    </TranslatorProvider>
+  )
+})
