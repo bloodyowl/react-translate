@@ -1,7 +1,8 @@
-import React, { Component, PropTypes, Children } from "react"
-import createTranslator from "./createTranslator"
+import React, { Component, Children } from 'react'
+import createTranslator from './createTranslator'
+import PropTypes from 'prop-types'
 
-class TranslatorProvider extends Component {
+class TranslatorProvider extends React.Component {
 
   getChildContext() {
     const { translations } = this.props
@@ -12,7 +13,7 @@ class TranslatorProvider extends Component {
   }
 
   render() {
-    return Children.only(this.props.children)
+    return React.Children.only(this.props.children)
   }
 }
 
