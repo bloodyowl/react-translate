@@ -1,11 +1,12 @@
-import React, { Component, PropTypes } from "react"
+import React from 'react'
+import PropTypes from 'prop-types'
 
-export default function translate(displayName, shouldComponentUpdate) {
+export default function translate(displayName, shouldComponentUpdate, fallBackString) {
   let t
   let previousLocale = null
   return (ChildComponent) => {
 
-     class Translator extends Component {
+     class Translator extends React.Component {
 
         constructor(props, context) {
           super(props, context)
@@ -14,7 +15,7 @@ export default function translate(displayName, shouldComponentUpdate) {
 
         render() {
           const { translator, locale } = this.context
-          if(locale !== previousLocale) {
+          if (locale !== previousLocale) {
             t = translator(displayName)
             previousLocale = locale
           }
