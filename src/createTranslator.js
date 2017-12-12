@@ -12,6 +12,9 @@ const createTranslator = (keys) => {
     if ((1 === componentNames.length) &&
       (false === keys.hasOwnProperty(componentNames[0]))
     ) {
+      if (fallBackString !== undefined) {
+        return () => fallBackString
+      }
       return (key) => `${componentNames[0]}.${key}`
     }
 
@@ -21,6 +24,9 @@ const createTranslator = (keys) => {
     return (key, params) => {
       let translation = componentKeys[key]
       if (translation === undefined) {
+        if (fallBackString !== undefined) {
+          return fallBackString
+        }
         return `${componentNames[0]}.${key}`
       }
       if(Array.isArray(translation)) {

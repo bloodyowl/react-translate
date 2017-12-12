@@ -40,7 +40,7 @@ render(
 )
 ```
 
-### translate(displayName[, shouldComponentUpdate])
+### translate(displayName[, shouldComponentUpdate][, fallBackString])
 
 Connects a component to the translations provided by `<TranslatorProvider>`. It passes a `t` function to your component's props. It returns a new, connected component class (i.e., it does not modify the component class passed to it).
 
@@ -48,6 +48,7 @@ Connects a component to the translations provided by `<TranslatorProvider>`. It 
 
 - `displayName` (*String*) Name of the component in the translations. It is required because we cannot rely on the `component.name` with minified code.
 - `shouldComponentUpdate` optional, (*Function*) Custom `shouldComponentUpdate` for the component.
+- If the translation key is not found and `fallBackString` is provided we use this instead.
 
 #### Usage
 
@@ -61,7 +62,7 @@ const Header = ({ t }) => (
 export default translate("Header")(Header)
 ```
 
-### transate([ displayName, childTranslations, ... ][, shouldComponentUpdate]) - extended translations
+### transate([ displayName, childTranslations, ... ][, shouldComponentUpdate][, fallBackString]) - extended translations
 
 You can extend more general translations by providing an array of translation keys to `translate` in order to reduce repetition. Keys to the left have priority and will overwrite any previous translations.
 
