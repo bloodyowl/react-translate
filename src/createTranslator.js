@@ -3,7 +3,7 @@ import getPluralType from "./getPluralType"
 
 const createTranslator = (keys) => {
   const pluralType = getPluralType(keys.locale)
-  return (componentName) => {
+  return (componentName, fallBackString) => {
 
     const componentNames = (false === Array.isArray(componentName))
       ? [ componentName ]
@@ -12,16 +12,18 @@ const createTranslator = (keys) => {
     if ((1 === componentNames.length) &&
       (false === keys.hasOwnProperty(componentNames[0]))
     ) {
-      if (fallBackString !== undefined) {
-        return () => fallBackString
+      return (key) => {
+        if ((componentNames[0].key === undefined) && (fallBackString !== undefined)) {
+          return fallBackString
+        }
+        return `${componentNames[0]}.${key}`
       }
-      return (key) => `${componentNames[0]}.${key}`
     }
 
     const componentKeys = componentNames.reverse().reduce((translations, name) => {
       return Object.assign(translations, keys[name])
     }, {})
-    return (key, params) => {
+    return (key, params, fallBackString) => {
       let translation = componentKeys[key]
       if (translation === undefined) {
         if (fallBackString !== undefined) {

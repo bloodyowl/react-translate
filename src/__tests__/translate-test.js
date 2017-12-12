@@ -93,3 +93,22 @@ it("`t` can deal with extended translations", () => {
     </TranslatorProvider>
   )
 })
+
+it("Uses fall back string if key does not exist and string provided", () => {
+  const Dummy = ({ t }) => {
+    const fallBack = 'this is my fall back string'
+    expect(t("foo", undefined, fallBack)).toBe(fallBack)
+    return <div />
+  }
+  const WrappedDummy = translate([ "Dummy" ])(Dummy)
+  renderIntoDocument(
+    <TranslatorProvider
+      translations={{
+        locale: "en",
+        "Dummy": {}
+      }}
+    >
+      <WrappedDummy />
+    </TranslatorProvider>
+  )
+})

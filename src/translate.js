@@ -15,8 +15,8 @@ export default function translate(displayName, shouldComponentUpdate, fallBackSt
 
         render() {
           const { translator, locale } = this.context
-          if(locale !== previousLocale) {
-            t = translator(displayName, fallBackString)
+          if (locale !== previousLocale) {
+            t = translator(displayName)
             previousLocale = locale
           }
           return (
