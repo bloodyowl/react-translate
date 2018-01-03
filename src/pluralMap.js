@@ -1,10 +1,10 @@
-const CHINESE = "chinese"
-const GERMAN = "german"
-const FRENCH = "french"
-const RUSSIAN = "russian"
-const CZECH = "czech"
-const POLISH = "polish"
-const ICELANDIC = "icelandic"
+const CHINESE = "chinese";
+const GERMAN = "german";
+const FRENCH = "french";
+const RUSSIAN = "russian";
+const CZECH = "czech";
+const POLISH = "polish";
+const ICELANDIC = "icelandic";
 
 const pluralMap = {
   id: CHINESE,
@@ -39,7 +39,7 @@ const pluralMap = {
 
   pl: POLISH,
 
-  is: ICELANDIC,
-}
+  is: ICELANDIC
+};
 
-export default pluralMap
+export default pluralMap;
