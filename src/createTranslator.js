@@ -1,17 +1,17 @@
-import getPluralType from "./getPluralType"
-import render from "./render"
+import render from "./render";
+import getPluralType from "./getPluralType";
 
-const createTranslator = (keys) => {
-  const pluralType = getPluralType(keys.locale)
-  return (componentName) => {
+const createTranslator = keys => {
+  const pluralType = getPluralType(keys.locale);
+  return componentName => {
     if (!keys.hasOwnProperty(componentName)) {
-      return (key) => `${componentName}.${key}`
+      return key => `${componentName}.${key}`;
     }
-    const componentKeys = keys[componentName]
+    const componentKeys = keys[componentName];
     return (key, params) => {
-      let translation = componentKeys[key]
+      let translation = componentKeys[key];
       if (translation === undefined) {
-        return `${componentName}.${key}`
+        return `${componentName}.${key}`;
       }
       const translationObjType = typeof translation;
       if ("string" !== translationObjType && "number" !== translationObjType && "boolean" !== translationObjType) {
@@ -21,15 +21,14 @@ const createTranslator = (keys) => {
       else if(Array.isArray(translation)) {
         // plural
         if (params != null && typeof params.n === "number") {
-          translation = translation[pluralType(params.n)]
-        }
-        else {
-          return render(translation.join("\n"), params)
+          translation = translation[pluralType(params.n)];
+        } else {
+          return render(translation.join("\n"), params);
         }
       }
-      return render(translation, params)
-    }
-  }
-}
+      return render(translation, params);
+    };
+  };
+};
 
-export default createTranslator
+export default createTranslator;
