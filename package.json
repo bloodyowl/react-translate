@@ -20,7 +20,7 @@
     "react-addons-test-utils": "^15.0.0"
   },
   "peerDependencies": {
-    "react": "^15.0.0"
+    "react": "^15.0.0 < 17"
   },
   "scripts": {
     "start": "babel src --out-dir lib --ignore='__tests__'",
