@@ -36,6 +36,7 @@ const pluralMap = {
   ru: RUSSIAN,
 
   cs: CZECH,
+  sk: CZECH,
 
   pl: POLISH,
 
