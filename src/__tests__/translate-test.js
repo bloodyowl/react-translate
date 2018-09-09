@@ -46,6 +46,25 @@ it("`t` returns key if component is not specified", () => {
   );
 });
 
+it("`t` returns dictionary if value of key in translations is a dictionary", () => {
+  const Dummy = ({ t }) => {
+    expect(typeof t).toBe("function")
+    expect(t("foo")["bar"]).toBe("baz")
+    return <div />
+  }
+  const WrappedDummy = translate("Dummy")(Dummy)
+  renderIntoDocument(
+    <TranslatorProvider
+      translations={{
+        locale: "en",
+        "Dummy": {"foo": {"bar":"baz"}},
+      }}
+    >
+      <WrappedDummy />
+    </TranslatorProvider>
+  )
+})
+
 it("`t` returns key if not specified", () => {
   const Dummy = ({ t }) => {
     expect(typeof t).toBe("function");
