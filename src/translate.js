@@ -13,11 +13,12 @@ export default function translate(displayName, shouldComponentUpdate) {
 
       render() {
         const { translator, locale } = this.context;
+        const { forwardedRef, ...rest } = this.props;
         if (locale !== previousLocale) {
           t = translator(displayName);
           previousLocale = locale;
         }
-        return <ChildComponent {...this.props} t={t} />;
+        return <ChildComponent ref={forwardedRef} {...rest} t={t} />;
       }
     }
 
@@ -26,6 +27,8 @@ export default function translate(displayName, shouldComponentUpdate) {
       locale: PropTypes.string.isRequired
     };
 
-    return Translator;
+    return React.forwardRef ? React.forwardRef((props, ref) => {
+        return <Translator {...props} forwardedRef={ref} />;
+    }) : Translator;
   };
 }
