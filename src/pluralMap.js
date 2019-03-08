@@ -5,6 +5,7 @@ const RUSSIAN = "russian";
 const CZECH = "czech";
 const POLISH = "polish";
 const ICELANDIC = "icelandic";
+const ESTONIAN = "estonian";
 
 const pluralMap = {
   id: CHINESE,
@@ -40,7 +41,9 @@ const pluralMap = {
 
   pl: POLISH,
 
-  is: ICELANDIC
+  is: ICELANDIC,
+
+  et: ESTONIAN
 };
 
 export default pluralMap;

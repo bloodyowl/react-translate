@@ -23,6 +23,9 @@ const pluralTypes = {
   },
   icelandic(n) {
     return n % 10 !== 1 || n % 100 === 11 ? 1 : 0;
+  },
+  estonian(n) {
+    return n !== 1 ? 1 : 0;
   }
 };
 
