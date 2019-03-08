@@ -43,7 +43,7 @@ const pluralMap = {
 
   is: ICELANDIC,
 
-  et: ESTONIAN
+  et: GERMAN
 };
 
 export default pluralMap;
