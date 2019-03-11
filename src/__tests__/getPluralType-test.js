@@ -8,6 +8,10 @@ it("getPluralType", () => {
   expect(getPluralType("en")(0)).toBe(1);
   expect(getPluralType("en")(1)).toBe(0);
   expect(getPluralType("en")(2)).toBe(1);
+  expect(getPluralType("et")(0)).toBe(1);
+  expect(getPluralType("et")(1)).toBe(0);
+  expect(getPluralType("et")(2)).toBe(1);
+
 });
 
 it("getPluralType throws if locale is undefined", () => {
