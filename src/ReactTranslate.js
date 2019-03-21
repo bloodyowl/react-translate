@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext } from "react";
+import React, { createContext, useMemo, useContext } from "react";
 import createTranslator from "./createTranslator";
 
 function translator(namespace) {
@@ -9,7 +9,7 @@ let Context = createContext({ translator, locale: null });
 
 export function useTranslate(namespace) {
   let { translator, locale } = useContext(Context);
-  let t = useCallback(translator(namespace), [namespace, locale]);
+  let t = useMemo(() => translator(namespace), [namespace, locale]);
   return t;
 }
 
