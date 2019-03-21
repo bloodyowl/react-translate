@@ -2,7 +2,7 @@
   "name": "react-translate",
   "version": "6.1.0",
   "description": "react utilities for simple i18n",
-  "main": "./lib/index.js",
+  "main": "./lib/ReactTranslate.js",
   "files": [
     "README.md",
     "LICENSE",
@@ -16,11 +16,11 @@
     "babel-preset-react": "^6.11.1",
     "jest": "^21.2.1",
     "raf": "^3.4.0",
-    "react": ">=15.0.0 || >=16.0.0",
-    "react-dom": ">=15.0.0 || >=16.0.0"
+    "react": "16.8.4",
+    "react-dom": "16.8.4"
   },
   "peerDependencies": {
-    "react": ">=15.0.0 || >=16.0.0"
+    "react": ">=16.8.0"
   },
   "scripts": {
     "start": "babel src --out-dir lib --ignore='__tests__'",

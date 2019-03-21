@@ -1,5 +1,4 @@
-const translate = require("../translate").default;
-const TranslatorProvider = require("../TranslatorProvider").default;
+const {translate, TranslatorProvider} = require("../ReactTranslate");
 const React = require("react");
 const { renderIntoDocument } = require("react-dom/test-utils");
 
