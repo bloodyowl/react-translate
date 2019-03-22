@@ -37,7 +37,6 @@
   "author": "bloodyowl",
   "license": "MIT",
   "dependencies": {
-    "invariant": "^2.1.2",
-    "prop-types": "^15.6.0"
+    "invariant": "^2.1.2"
   }
 }
