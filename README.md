@@ -7,7 +7,7 @@
 ```console
 $ npm install --save react-translate
 # or
-$ yarn add react-trasnlate
+$ yarn add react-translate
 ```
 
 ## Usage
