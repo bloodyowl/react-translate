@@ -8,6 +8,10 @@
     "LICENSE",
     "lib"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bloodyowl/react-translate"
+  },
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-jest": "^15.0.0",
